@@ -64,8 +64,8 @@ public class ObserverPatternDemo {
         FacebookUser alice = new FacebookUser("Alice");
         FacebookUser bob = new FacebookUser("bob");
 
-        FacebookFollower follower1 = new FacebookFollower("Dickrider");
-        FacebookFollower follower2 = new FacebookFollower("Dickeater");
+        FacebookFollower follower1 = new FacebookFollower("follower1");
+        FacebookFollower follower2 = new FacebookFollower("follower2");
 
         alice.registerObserver(follower1);
         alice.registerObserver(follower2);
