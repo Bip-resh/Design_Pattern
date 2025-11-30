@@ -1,0 +1,48 @@
+interface Pizza {
+    void prepare();
+}
+
+class cheesePizza implements Pizza {
+    @Override
+    public void prepare() {
+        System.out.println("Cheese pizza is prepared");
+    }
+}
+class peperoniPizza implements Pizza {
+    @Override
+    public void prepare() {
+        System.out.println("peperoni pizza is prepared");
+    }
+}
+class veggiePizza implements Pizza {
+    @Override
+    public void prepare() {
+        System.out.println("veggie pizza is prepared");
+    }
+}
+
+
+
+class SimplePizzaFactory {
+    public Pizza createPizza(String type){
+        Pizza pizza = null;
+        if (type.equals("cheese")) {
+            pizza = new cheesePizza();
+        } else if (type.equals("peperoni")) {
+            pizza = new peperoniPizza();
+
+        } else if (type.equals("veggie")) {
+            pizza = new veggiePizza();
+        }
+        return pizza;
+    }
+}
+
+class FactoryPatternDesign {
+    public static void main(String[] args) {
+        SimplePizzaFactory simplePizzaFactory = new SimplePizzaFactory();
+        Pizza pizza = simplePizzaFactory.createPizza("cheese");
+        pizza.prepare();
+        simplePizzaFactory.createPizza("peperoni").prepare();
+    }
+}
