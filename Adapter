@@ -1,0 +1,35 @@
+interface typeC {
+    void connectWithTypeC();
+}
+
+class USB {
+    void connectWithUSB() {
+        System.out.println("connected with USB");
+    }
+}
+class USBToTypeCAdapter implements typeC{
+    private USB usb;
+
+    public USBToTypeCAdapter(USB usb) {
+        this.usb = usb;
+    }
+
+    @Override
+    public void connectWithTypeC() {
+        usb.connectWithUSB();
+        System.out.println("Convert to type c");
+    }
+
+
+}
+
+public class Adapter {
+    public static void main(String[] args) {
+        USB usbDevice = new USB();
+        typeC adapter = new USBToTypeCAdapter(usbDevice);
+        adapter.connectWithTypeC();
+
+
+
+    }
+}
