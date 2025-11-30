@@ -1,0 +1,63 @@
+interface Command {
+    void execute();
+}
+
+class Light {
+    void turnOn() {
+        System.out.println("Light is turn on");
+    }
+
+    void turnOff() {
+        System.out.println("Light is turn off");
+    }
+}
+
+class TurnOnCommand implements Command {
+    private Light light;
+
+    TurnOnCommand(Light light) {
+        this.light = light;
+    }
+
+    @Override
+    public void execute() {
+        light.turnOn();
+
+    }
+}
+
+class TurnOfCommand implements Command {
+    private Light light;
+
+    TurnOfCommand(Light light) {
+        this.light = light;
+    }
+    @Override
+    public void execute() {
+        light.turnOff();
+    }
+}
+
+class Remote {
+    private Command command;
+
+    Remote(Command command) {
+        this.command = command;
+    }
+
+    void pressButton() {
+        command.execute();
+        
+    }
+}
+public class CommandPatternDesign {
+    public static void main(String[] args) {
+        Light light = new Light();
+
+        Remote r1 = new Remote(new TurnOnCommand(light));
+        r1.pressButton();
+        Remote r2 = new Remote(new TurnOfCommand(light));
+        r2.pressButton();
+
+    }
+}
