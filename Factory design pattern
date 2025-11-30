@@ -26,13 +26,18 @@ class veggiePizza implements Pizza {
 class SimplePizzaFactory {
     public Pizza createPizza(String type){
         Pizza pizza = null;
-        if (type.equals("cheese")) {
-            pizza = new cheesePizza();
-        } else if (type.equals("peperoni")) {
-            pizza = new peperoniPizza();
-
-        } else if (type.equals("veggie")) {
-            pizza = new veggiePizza();
+        switch (type) {
+            case "cheese":
+                pizza = new cheesePizza();
+                break;
+            case "peperoni":
+                pizza = new peperoniPizza();
+                break;
+            case "veggie":
+                pizza = new veggiePizza();
+                break;
+            default:
+                break;
         }
         return pizza;
     }
